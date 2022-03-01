@@ -11,20 +11,25 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import os, pymysql, json, sys
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-import os
-import pymysql
+ROOT_DIR = os.path.dirname(BASE_DIR)
+SECRET_BASE_FILE = os.path.join(BASE_DIR, 'secrets.json')
+
+secrets = json.loads(open(SECRET_BASE_FILE).read())
+for key, value in secrets.items():
+    setattr(sys.modules[__name__], key, value)
+
+
 pymysql.install_as_MySQLdb()
 
-ALGORITHM  = os.environ["ALGORITHM"]
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ["SECRETKEY5"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -41,13 +46,24 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'corsheaders',
     'rest_framework',
+    'rest_framework_simplejwt.token_blacklist',
+    'rest_framework.authtoken',
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
     'drf_yasg',
-    'postings',
+    # 'postings',
     'core',
     'users',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.kakao',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -81,21 +97,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Board.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
-DATABASES = {
-    'default' :
-{
-        'ENGINE'  : 'django.db.backends.mysql',
-        'NAME'    : os.environ['DB5'],
-        'USER'    : os.environ['USER'],
-        'PASSWORD': os.environ['PASSWORD5'],
-        'HOST'    : os.environ['HOST5'],
-        'PORT'    : os.environ['PORT'],
-        'OPTIONS' : {'charset': 'utf8mb4'}
-    }
-}
+AUTH_USER_MODEL = 'users.User'
 
 
 # Password validation
@@ -168,7 +170,23 @@ CORS_ALLOW_HEADERS = (
 )
 
 REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
+    ),
     "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema",
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10
+}
+
+REST_USE_JWT = True
+from datetime import timedelta
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=2),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': True,
 }
