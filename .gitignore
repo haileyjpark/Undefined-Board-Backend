@@ -362,3 +362,4 @@ zsdoc/data
 # End of https://www.toptal.com/developers/gitignore/api/macos,pycharm,python,vim,zsh,linux,visualstudiocode
 
 secrets.json
+board_project.pem
