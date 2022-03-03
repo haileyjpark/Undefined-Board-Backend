@@ -28,6 +28,14 @@ class Post(TimeStampModel):
     class Meta:
         db_table = 'posts'   
 
+
+class PostLike(models.Model):
+    post = models.ForeignKey('Post', on_delete=models.CASCADE)
+    user = models.ForeignKey('users.User', on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = 'post_likes'
+  
   
 class TagList(models.Model):
     tag  = models.ForeignKey('Tag', on_delete=models.CASCADE)
@@ -43,12 +51,9 @@ class Comment(TimeStampModel):
     class Meta:
         db_table  = 'comments'
         
+class CommentLike(models.Model):
+    comment = models.ForeignKey('Comment', on_delete=models.CASCADE)
+    user = models.ForeignKey('users.User', on_delete=models.CASCADE)
 
-class Like(models.Model):
-    is_liked = models.BooleanField()
-    post     = models.ForeignKey('Post', on_delete=models.CASCADE, null=True)
-    user     = models.ForeignKey('users.User', on_delete=models.CASCADE)
-    comment  = models.ForeignKey('Comment', on_delete=models.CASCADE, null=True)
-    
     class Meta:
-        db_table = 'likes'
+        db_table = 'comment_likes'

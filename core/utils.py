@@ -84,3 +84,5 @@ class AuthorizeProduct(authentication.BaseAuthentication):
         request.user = user
 
         return self.original_function(self, request, *args, **kwargs)
+
+        return self.original_function(self, request, *args, **kwargs)
