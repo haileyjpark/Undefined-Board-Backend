@@ -3,7 +3,7 @@ from core.models import TimeStampModel
 
 
 class Category(models.Model):
-    category      = models.CharField(max_length=15, unique=True)
+    category_name = models.CharField(max_length=15, unique=True)
     parent        = models.ForeignKey('self', on_delete=models.CASCADE, related_name='main_category', null = True)
     
     class Meta:
@@ -11,7 +11,7 @@ class Category(models.Model):
 
     
 class Tag(models.Model):
-    tag = models.CharField(max_length=50, unique=True)  
+    tag_name = models.CharField(max_length=50, unique=True)  
     
     class Meta:
         db_table = 'tags' 
@@ -22,7 +22,7 @@ class Post(TimeStampModel):
     content  = models.CharField(max_length=5000)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     user     = models.ForeignKey('users.User', on_delete=models.CASCADE)
-    reader   = models.IntegerField(null=True)
+    viewer   = models.IntegerField(null=True)
     tag     = models.ManyToManyField(Tag, through='TagList')
     
     class Meta:
