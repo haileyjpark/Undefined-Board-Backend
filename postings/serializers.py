@@ -1,4 +1,3 @@
-from unicodedata import category
 from .models import Category, Post, Tag, TagList
 from rest_framework import serializers
 from django.db               import transaction
