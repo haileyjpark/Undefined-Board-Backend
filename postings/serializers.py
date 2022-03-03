@@ -1,4 +1,4 @@
-from .models import Category, Post, Tag, TagList
+from .models import Category, Post, Tag, TagList, Comment
 from rest_framework import serializers
 from django.db               import transaction
 from django.core.exceptions  import ObjectDoesNotExist
@@ -33,7 +33,7 @@ class TagPostSerializer(serializers.ModelSerializer):
 class PostSerializer(serializers.ModelSerializer):
     user = serializers.ReadOnlyField(source = 'user.id')
     tag  = CreatableSlugRelatedField(many=True, queryset=Tag.objects.all(), slug_field='tag')
-    category = serializers.CharField()
+    category = serializers.CharField(source='category.category')
     
     class Meta:
         model = Post 
@@ -52,3 +52,24 @@ class PostSerializer(serializers.ModelSerializer):
 
         post.save()
         return post
+    
+
+class CommentSerializer(serializers.ModelSerializer):
+    user = serializers.ReadOnlyField(source = 'user.id')
+    
+    class Meta:
+        model = Comment
+        fields = ['id', 'user', 'created_at', 'content']
+        read_only_fields = ['id', 'created_at', 'main_comment', 'post']
+        
+    def create(self, validated_data):
+        validated_data['post'] = Post.objects.get(id=validated_data['post'])
+        
+        if 'main_comment' in validated_data:
+            validated_data['main_comment'] = Comment.objects.get(parent=validated_data['main_comment'])
+        
+        comment = self.Meta.model.objects.create(**validated_data)
+
+        comment.save()
+        return comment
+        

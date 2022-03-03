@@ -64,6 +64,3 @@ class KakaoSignIn(View):
         
         except jwt.ExpiredSignatureError:
             return JsonResponse({'message':'TOKEN_EXPIRED'}, status = 400)
-
-
-        
