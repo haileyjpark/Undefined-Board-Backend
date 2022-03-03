@@ -38,10 +38,12 @@ class UserManager(BaseUserManager):
 
 class User(AbstractUser):
     email               = models.EmailField(unique=True, max_length=255)
-    name                = models.CharField(max_length=50)
+    nickname            = models.CharField(max_length=50, null=True)
     phone_number        = models.CharField(max_length=50,null=True)
     profile_image       = models.URLField(max_length=300,null=True)
     description         = models.CharField(max_length=1000,null=True)
+    kakao_id            = models.IntegerField(unique=True)
+    username            = None
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

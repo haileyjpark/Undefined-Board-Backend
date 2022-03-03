@@ -10,28 +10,28 @@ class Category(models.Model):
         db_table = 'categories'
 
     
-class Post(TimeStampModel):
-    content  = models.CharField(max_length=5000)
-    category = models.ForeignKey('Category', on_delete=models.CASCADE)
-    user     = models.ForeignKey('users.User', on_delete=models.CASCADE)
-    
-    class Meta:
-        db_table = 'posts'
-        
-      
 class Tag(models.Model):
     tag = models.CharField(max_length=50, unique=True)  
     
     class Meta:
-        db_table = 'tags'    
+        db_table = 'tags' 
+            
+
+class Post(TimeStampModel):
+    title    = models.CharField(max_length=100)
+    content  = models.CharField(max_length=5000)
+    category = models.ForeignKey('Category', on_delete=models.CASCADE)
+    user     = models.ForeignKey('users.User', on_delete=models.CASCADE)
+    reader   = models.IntegerField(null=True)
+    tag     = models.ManyToManyField(Tag, through='TagList')
+    
+    class Meta:
+        db_table = 'posts'   
 
   
-class TagPost(models.Model):
+class TagList(models.Model):
     tag  = models.ForeignKey('Tag', on_delete=models.CASCADE)
     post = models.ForeignKey('Post', on_delete=models.CASCADE)
-        
-    class Meta:
-        db_table = 'tag_post'
         
 
 class Comment(TimeStampModel):
