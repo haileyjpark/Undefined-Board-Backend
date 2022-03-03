@@ -1,3 +1,4 @@
+from unicodedata import category
 from .models import Category, Post, Tag, TagList
 from rest_framework import serializers
 from django.db               import transaction
@@ -33,7 +34,8 @@ class TagPostSerializer(serializers.ModelSerializer):
 class PostSerializer(serializers.ModelSerializer):
     user = serializers.ReadOnlyField(source = 'user.id')
     tag  = CreatableSlugRelatedField(many=True, queryset=Tag.objects.all(), slug_field='tag')
-
+    category = serializers.CharField()
+    
     class Meta:
         model = Post 
         fields = ['id', 'title', 'reader', 'user', 'category', 'created_at', 'content', 'tag']
@@ -42,6 +44,7 @@ class PostSerializer(serializers.ModelSerializer):
     @transaction.atomic() 
     def create(self, validated_data):
         validated_tags = validated_data.pop('tag')
+        validated_data['category'] = Category.objects.get(category=validated_data['category'])
         post = self.Meta.model.objects.create(**validated_data)
         
         for tag in validated_tags:

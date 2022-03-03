@@ -20,11 +20,11 @@ class MyAuthentication(authentication.TokenAuthentication):
 
     def authenticate(self, request):
         auth = authentication.get_authorization_header(request).split()
-
+        
         if not auth or auth[0].lower() != self.keyword.lower().encode():
             msg = _("Invalid token header. No credentials provided.")
             raise AuthenticationFailed(msg)
-
+        
         if len(auth) == 1:
             msg = _("Invalid token header. No credentials provided.")
             raise AuthenticationFailed(msg)

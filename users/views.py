@@ -53,7 +53,6 @@ class KakaoSignIn(View):
         
             access_token = jwt.encode({'user_id' : user.id, 'exp' : datetime.utcnow() + timedelta(days=7)}, secret_key, algorithm)
             profile_image = User.objects.get(id=user.id).profile_image
-            print(profile_image)
             
             return JsonResponse({'message':'SUCCESS', 'access_token' : access_token, 'profile_image' : profile_image}, status = status_code)
         
