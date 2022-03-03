@@ -33,7 +33,7 @@ class TagPostSerializer(serializers.ModelSerializer):
 class PostSerializer(serializers.ModelSerializer):
     user = serializers.ReadOnlyField(source = 'user.id')
     tag  = CreatableSlugRelatedField(many=True, queryset=Tag.objects.all(), slug_field='tag')
-    category = serializers.CharField(source='category.category')
+    category = serializers.IntegerField(source='category.id')
     
     class Meta:
         model = Post 
