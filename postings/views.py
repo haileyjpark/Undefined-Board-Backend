@@ -1,7 +1,6 @@
 from core.utils import MyAuthentication
 from postings.permissions import IsOwnerOrReadOnly
 from .models import Post, Comment
-from users.models import User
 from .serializers import PostSerializer, CommentSerializer
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly

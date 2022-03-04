@@ -1,7 +1,6 @@
 from .models import Category, Post, Tag, TagList, Comment
 from rest_framework import serializers
 from django.db               import transaction
-from django.core.exceptions  import ObjectDoesNotExist
 
 
 class CreatableSlugRelatedField(serializers.SlugRelatedField):
@@ -50,10 +49,7 @@ class PostSerializer(serializers.ModelSerializer):
         
     @transaction.atomic() 
     def create(self, validated_data):
-        print(validated_data)
         validated_tags = validated_data.pop('tag')
-        print(validated_data['category'])
-        print(validated_data['category'])
         validated_data['category'] = Category.objects.get(id=validated_data['category']['id'])
         post = self.Meta.model.objects.create(**validated_data)
         
