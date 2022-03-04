@@ -15,7 +15,9 @@ class Tag(models.Model):
     
     class Meta:
         db_table = 'tags' 
-            
+    
+    def __str__(self):
+        return self.tag_name
 
 class Post(TimeStampModel):
     title    = models.CharField(max_length=100)
@@ -23,7 +25,7 @@ class Post(TimeStampModel):
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     user     = models.ForeignKey('users.User', on_delete=models.CASCADE)
     viewer   = models.IntegerField(null=True)
-    tag     = models.ManyToManyField(Tag, through='TagList')
+    tag     = models.ManyToManyField('Tag', through='TagList', related_name="tags")
     
     class Meta:
         db_table = 'posts'   
