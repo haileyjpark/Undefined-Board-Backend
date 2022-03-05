@@ -1,8 +1,8 @@
 from urllib import response
 from core.utils import MyAuthentication
 from postings.permissions import IsOwnerOrReadOnly
-from .models import Post, Comment, PostLike, CommentLike
-from .serializers import CommentLikeSerializer, PostSerializer, CommentSerializer, PostLikeSerializer
+from .models import Post, Comment
+from .serializers import PostSerializer, CommentSerializer
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.filters import SearchFilter, BaseFilterBackend
