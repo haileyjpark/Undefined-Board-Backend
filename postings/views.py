@@ -36,23 +36,23 @@ class CommentViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(user = self.request.user)
 
-class PostLikeViewSet(viewsets.ModelViewSet):
-    authentication_classes = [MyAuthentication]
-    permission_classes = [IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
-    queryset = PostLike.objects.all()
-    serializer_class = PostLikeSerializer
-    http_method_names = ['post']
+# class PostLikeViewSet(viewsets.ModelViewSet):
+#     authentication_classes = [MyAuthentication]
+#     permission_classes = [IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
+#     queryset = PostLike.objects.all()
+#     serializer_class = PostLikeSerializer
+#     http_method_names = ['post']
     
-    def perform_create(self, serializer):
-        serializer.save(user = self.request.user)
+#     def perform_create(self, serializer):
+#         serializer.save(user = self.request.user)
         
 
-class CommentLikeViewSet(viewsets.ModelViewSet):
-    authentication_classes = [MyAuthentication]
-    permission_classes = [IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
-    queryset = CommentLike.objects.all()
-    serializer_class = CommentLikeSerializer
-    http_method_names = ['post']
+# class CommentLikeViewSet(viewsets.ModelViewSet):
+#     authentication_classes = [MyAuthentication]
+#     permission_classes = [IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
+#     queryset = CommentLike.objects.all()
+#     serializer_class = CommentLikeSerializer
+#     http_method_names = ['post']
     
-    def perform_create(self, serializer):
-        serializer.save(user = self.request.user)
+#     def perform_create(self, serializer):
+#         serializer.save(user = self.request.user)

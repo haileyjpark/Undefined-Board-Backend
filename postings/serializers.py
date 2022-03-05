@@ -60,33 +60,33 @@ class PostSerializer(serializers.ModelSerializer):
         post.save()
         return post
     
-class PostLikeSerializer(serializers.ModelSerializer):
-    user = serializers.ReadOnlyField(source = 'user.id')
+# class PostLikeSerializer(serializers.ModelSerializer):
+#     user = serializers.ReadOnlyField(source = 'user.id')
     
-    class Meta:
-        model = PostLike
-        fields = '__all__'
+#     class Meta:
+#         model = PostLike
+#         fields = '__all__'
         
-    def create(self, validated_data):
-        obj, created = self.Meta.model.objects.get_or_create(**validated_data)
-        if not created:
-            obj.delete()
-            return {"Message":"Like Cancelled"}
-        return obj
+#     def create(self, validated_data):
+#         obj, created = self.Meta.model.objects.get_or_create(**validated_data)
+#         if not created:
+#             obj.delete()
+#             return {"Message":"Like Cancelled"}
+#         return obj
         
 
-class CommentLikeSerializer(serializers.ModelSerializer):
-    user = serializers.ReadOnlyField(source = 'user.id')
+# class CommentLikeSerializer(serializers.ModelSerializer):
+#     user = serializers.ReadOnlyField(source = 'user.id')
     
-    class Meta:
-        model = CommentLike
-        fields = '__all__'
+#     class Meta:
+#         model = CommentLike
+#         fields = '__all__'
         
-    def create(self, validated_data):
-        print(validated_data)
-        print(validated_data['comment'])
-        obj, created = self.Meta.model.objects.get_or_create(**validated_data)
-        if not created:
-            obj.delete()
-            return {"Message":"Like Cancelled"}
-        return obj
+#     def create(self, validated_data):
+#         print(validated_data)
+#         print(validated_data['comment'])
+#         obj, created = self.Meta.model.objects.get_or_create(**validated_data)
+#         if not created:
+#             obj.delete()
+#             return {"Message":"Like Cancelled"}
+#         return obj
