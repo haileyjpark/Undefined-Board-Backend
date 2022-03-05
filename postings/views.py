@@ -1,14 +1,13 @@
-from urllib import response
 from core.utils import MyAuthentication
 from postings.permissions import IsOwnerOrReadOnly
 from .models import Post, Comment
 from .serializers import PostSerializer, CommentSerializer
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
-from rest_framework.filters import SearchFilter, BaseFilterBackend
-from django_filters import rest_framework as filters
-from drf_yasg import openapi
-from drf_yasg.utils import swagger_auto_schema
+from rest_framework.filters import SearchFilter
+# from django_filters import rest_framework as filters
+# from drf_yasg import openapi
+# from drf_yasg.utils import swagger_auto_schema
 
 
 
