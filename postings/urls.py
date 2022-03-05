@@ -5,7 +5,7 @@ from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 router.register('postings', PostViewSet)
-# router.register('comment_likes', CommentLikeViewSet)
+router.register('comments', CommentViewSet)
 # router.register('post_likes', PostLikeViewSet)
 
 urlpatterns = [
