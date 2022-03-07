@@ -12,11 +12,9 @@ class KakaoAPI:
     def __init__(self, access_token):
         self.kakao_token = access_token
         self.kakao_url = 'https://kapi.kakao.com/v2/user/me'
-        print(access_token)
 
     def get_kakao_user(self):
         kakao_headers = {'Authorization' : f'Bearer {self.kakao_token}'}
-        print(kakao_headers)
         response = requests.get(self.kakao_url, headers=kakao_headers, timeout = 5)
         
         if response.json().get('code') == -401: 

@@ -37,6 +37,12 @@ class PostLike(models.Model):
 
     class Meta:
         db_table = 'post_likes'
+        constraints = [
+            models.UniqueConstraint(
+                fields=["user", "post"],
+                name="unique post likes",
+            ),
+        ]
   
   
 class TagList(models.Model):
@@ -59,3 +65,9 @@ class CommentLike(models.Model):
 
     class Meta:
         db_table = 'comment_likes'
+        constraints = [
+            models.UniqueConstraint(
+                fields=["user", "comment"],
+                name="unique comment likes",
+            ),
+        ]
