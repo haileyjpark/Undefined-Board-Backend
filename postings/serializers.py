@@ -1,4 +1,5 @@
 from .models import Category, Post, PostLike, Tag, TagList, Comment, CommentLike
+from users.models import User
 from rest_framework import serializers
 from django.db               import transaction
 
@@ -35,8 +36,16 @@ class CommentSerializer(serializers.ModelSerializer):
         fields = ['id', 'user', 'created_at', 'content', 'post', 'parent']
         read_only_fields = ['id', 'created_at']
            
+           
+           
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = '__all__' 
+        
+           
 class PostSerializer(serializers.ModelSerializer):
-    user = serializers.ReadOnlyField(source = 'user.id')
+    user = UserSerializer(read_only=True)
     tag  = CreatableSlugRelatedField(many=True, queryset=Tag.objects.all(), slug_field='tag_name')
     category = serializers.IntegerField(source='category.id')
     comment_set = CommentSerializer(many=True, read_only=True)
