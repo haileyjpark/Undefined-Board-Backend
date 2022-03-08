@@ -44,16 +44,19 @@ class PostLikeViewSet(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         user = self.request.user
         obj = PostLike.objects.filter(user=user, post=request.data['post'])
+        like_count = PostLike.objects.filter(post_id=request.data['post']).count()
         if obj.exists():
             obj.delete()
-            return Response({"Message : Like Cancelled"}, status=status.HTTP_200_OK)
+            return Response({"Message" : "Like Cancelled", "like_count" : like_counts}, status=status.HTTP_200_OK)
         
         request.data['user'] = User.objects.get(email=request.user).id
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
-        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)        
+        serializer_data = serializer.data 
+        serializer_data['like_count'] = like_count
+        return Response(serializer_data, status=status.HTTP_201_CREATED, headers=headers)        
         
 
 class CommentLikeViewSet(viewsets.ModelViewSet):
@@ -67,13 +70,16 @@ class CommentLikeViewSet(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         user = self.request.user
         obj = CommentLike.objects.filter(user=user, comment=request.data['comment'])
+        like_count = CommentLike.objects.filter(comment_id=request.data['comment']).count()
         if obj.exists():
             obj.delete()
-            return Response({"Message : Like Cancelled"}, status=status.HTTP_200_OK)
+            return Response({"Message" : "Like Cancelled", "like_count" : like_count}, status=status.HTTP_200_OK)
         
         request.data['user'] = User.objects.get(email=request.user).id
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
-        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)        
+        serializer_data = serializer.data 
+        serializer_data['like_count'] = like_count
+        return Response(serializer_data, status=status.HTTP_201_CREATED, headers=headers)

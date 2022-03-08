@@ -39,11 +39,16 @@ class UserSerializer(serializers.ModelSerializer):
             
 class CommentSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
+    like_count = serializers.SerializerMethodField(method_name='get_like_count')
     
     class Meta:
         model = Comment
-        fields = ['id', 'user', 'created_at', 'content', 'post', 'parent']
-        read_only_fields = ['id', 'created_at', 'user']
+        fields = ['id', 'user', 'created_at', 'content', 'post', 'parent', 'like_count']
+        read_only_fields = ['id', 'created_at', 'user', 'like_count']
+        
+    def get_like_count(self, obj):
+        like_count = CommentLike.objects.filter(comment=obj).count()
+        return like_count
         
            
 class PostSerializer(serializers.ModelSerializer):
@@ -51,13 +56,20 @@ class PostSerializer(serializers.ModelSerializer):
     tag  = CreatableSlugRelatedField(many=True, queryset=Tag.objects.all(), slug_field='tag_name')
     category = serializers.IntegerField(source='category.id')
     comment_set = CommentSerializer(many=True, read_only=True)
-        
+    like_count = serializers.SerializerMethodField(method_name='get_like_count')
+    
     class Meta:
         model = Post 
-        fields = '__all__'
-        read_only_fields = ['id', 'created_at', 'reader']
+        fields = ['title', 'content', 'category', 'user', 'viewer', 
+                  'tag', 'created_at', 'like_count', 'comment_set']
+        read_only_fields = ['id', 'created_at', 'updated_at', 'reader',
+                            'like_count']
         depth = 1
         
+    def get_like_count(self, obj):
+        like_count = PostLike.objects.filter(post=obj).count()
+        return like_count
+    
     @transaction.atomic() 
     def create(self, validated_data):
         validated_tags = validated_data.pop('tag')
