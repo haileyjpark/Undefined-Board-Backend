@@ -1,6 +1,44 @@
 # Board_Project
 
-게시판 미니 프로젝트 입니다.
+
+
+## 개발기간 
+2022/03/01~진행중
+
+
+## 팀원
+ 
+**_FE_** : [유환석](https://github.com/GrassHopper42/undefined)
+
+
+
+
+**_BE_** : 박정현
+
+
+
+
+ 
+## 서비스 소개
+ 
+> 게시판 미니 프로젝트 입니다.
+
+
+## 기술 스택
+ 
+Front-End : TypeScript, React.js
+
+
+ 
+Back-End : Python, Django, DRF, MySQL, Miniconda, AWS RDS, AWS EC2
+
+
+ 
+## 협업 툴
+Common : Git, Github, Jira, Notion
+
+
+
 
 ## Project Structure
 
