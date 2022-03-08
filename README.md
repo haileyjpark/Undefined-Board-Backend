@@ -48,10 +48,6 @@ Common : Git, Github, Jira, Notion
 ├── Board
 │   ├── __init__.py
 │   ├── __pycache__
-│   │   ├── __init__.cpython-38.pyc
-│   │   ├── settings.cpython-38.pyc
-│   │   ├── urls.cpython-38.pyc
-│   │   └── wsgi.cpython-38.pyc
 │   ├── asgi.py
 │   ├── settings.py
 │   ├── urls.py
@@ -60,18 +56,9 @@ Common : Git, Github, Jira, Notion
 ├── board_project.pem
 ├── core
 │   ├── __init__.py
-│   ├── __pycache__
-│   │   ├── __init__.cpython-38.pyc
-│   │   ├── admin.cpython-38.pyc
-│   │   ├── apps.cpython-38.pyc
-│   │   ├── models.cpython-38.pyc
-│   │   └── utils.cpython-38.pyc
 │   ├── admin.py
 │   ├── apps.py
 │   ├── migrations
-│   │   ├── __init__.py
-│   │   └── __pycache__
-│   │       └── __init__.cpython-38.pyc
 │   ├── models.py
 │   ├── tests.py
 │   ├── utils.py
@@ -80,32 +67,11 @@ Common : Git, Github, Jira, Notion
 ├── postings
 │   ├── __init__.py
 │   ├── __pycache__
-│   │   ├── __init__.cpython-38.pyc
-│   │   ├── admin.cpython-38.pyc
-│   │   ├── apps.cpython-38.pyc
-│   │   ├── models.cpython-38.pyc
-│   │   ├── permissions.cpython-38.pyc
-│   │   ├── serializers.cpython-38.pyc
-│   │   ├── urls.cpython-38.pyc
-│   │   └── views.cpython-38.pyc
 │   ├── admin.py
 │   ├── apps.py
 │   ├── migrations
-│   │   ├── 0001_initial.py
-│   │   ├── 0002_initial.py
-│   │   ├── 0003_commentlike_postlike_delete_like.py
-│   │   ├── 0004_rename_category_category_category_name_and_more.py
-│   │   ├── 0005_alter_post_tag.py
-│   │   ├── 0006_alter_post_tag.py
 │   │   ├── __init__.py
 │   │   └── __pycache__
-│   │       ├── 0001_initial.cpython-38.pyc
-│   │       ├── 0002_initial.cpython-38.pyc
-│   │       ├── 0003_commentlike_postlike_delete_like.cpython-38.pyc
-│   │       ├── 0004_rename_category_category_category_name_and_more.cpython-38.pyc
-│   │       ├── 0005_alter_post_tag.cpython-38.pyc
-│   │       ├── 0006_alter_post_tag.cpython-38.pyc
-│   │       └── __init__.cpython-38.pyc
 │   ├── models.py
 │   ├── permissions.py
 │   ├── serializers.py
@@ -118,22 +84,11 @@ Common : Git, Github, Jira, Notion
 ├── users
 │   ├── __init__.py
 │   ├── __pycache__
-│   │   ├── __init__.cpython-310.pyc
-│   │   ├── __init__.cpython-38.pyc
-│   │   ├── admin.cpython-38.pyc
-│   │   ├── apps.cpython-38.pyc
-│   │   ├── models.cpython-310.pyc
-│   │   ├── models.cpython-38.pyc
-│   │   ├── urls.cpython-38.pyc
-│   │   └── views.cpython-38.pyc
 │   ├── admin.py
 │   ├── apps.py
 │   ├── migrations
-│   │   ├── 0001_initial.py
 │   │   ├── __init__.py
 │   │   └── __pycache__
-│   │       ├── 0001_initial.cpython-38.pyc
-│   │       └── __init__.cpython-38.pyc
 │   ├── models.py
 │   ├── serializers.py
 │   ├── tests.py
