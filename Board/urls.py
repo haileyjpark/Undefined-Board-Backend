@@ -1,9 +1,11 @@
 from django.contrib import admin
 from django.urls import path, include, re_path
 from rest_framework import permissions
+from rest_framework.routers import DefaultRouter
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from postings import *
+from postings import views
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -19,8 +21,18 @@ schema_view = get_schema_view(
     permission_classes=(permissions.AllowAny,),
 )
 
+
+router = DefaultRouter()
+router.register(r"postings", views.PostViewSet, basename="postings")
+router.register(r"comments", views.CommentViewSet, basename="comments")
+router.register(r"post_likes", views.PostLikeViewSet, basename="post_likes")
+router.register(r"comment_likes", views.CommentLikeViewSet, basename="comment_likes")
+
+
+
 urlpatterns = [
     # path("admin/", admin.site.urls),
+    path('', include(router.urls)),
     path("", include('postings.urls')),
     # path("users/", include('dj_rest_auth.urls')),
     # path("users/", include('allauth.urls')),
