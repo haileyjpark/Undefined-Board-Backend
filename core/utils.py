@@ -63,26 +63,3 @@ class MyAuthentication(authentication.TokenAuthentication):
 
         except User.DoesNotExist:
             return JsonResponse({'message' : 'INVALID_USER'}, status=401)
-
-    
-
-
-class AuthorizeProduct(authentication.BaseAuthentication):
-    def __init__(self, original_function):
-        self.original_function = original_function
-    
-    def __call__(self, request, *args, **kwargs):   
-        token = request.headers.get('Authorization')
-
-        if not token:
-            request.user = None
-            return self.original_function(self, request, *args, **kwargs)
-        
-        payload      = jwt.decode(token, secret_key, algorithms=[algorithm])
-
-        user         = User.objects.get(id=payload['user_id'])
-        request.user = user
-
-        return self.original_function(self, request, *args, **kwargs)
-
-        return self.original_function(self, request, *args, **kwargs)

@@ -29,8 +29,6 @@ class KakaoSignIn(View):
             kakao_api   = KakaoAPI(kakao_token)
             kakao_user  = kakao_api.get_kakao_user()
             
-            print(kakao_user)
-            
             kakao_id      = kakao_user['id']
             name          = kakao_user['kakao_account']['profile']['nickname']
             email         = kakao_user['kakao_account']['email']
