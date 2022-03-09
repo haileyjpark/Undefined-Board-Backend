@@ -1,137 +1,113 @@
 # Board_Project
 
-게시판 미니 프로젝트 입니다.
 
- * [manage.py](./manage.py)
- * [requirements.txt](./requirements.txt)
- * [secrets.json](./secrets.json)
- * [Board](./Board)
-   * [__init__.py](./Board/__init__.py)
-   * [asgi.py](./Board/asgi.py)
-   * [wsgi.py](./Board/wsgi.py)
-   * [urls.py](./Board/urls.py)
-   * [settings.py](./Board/settings.py)
-   * [__pycache__](./Board/__pycache__)
-   * [__init__.cpython-38.pyc](./Board/__pycache__/__init__.cpython-38.pyc)
-   * [wsgi.cpython-38.pyc](./Board/__pycache__/wsgi.cpython-38.pyc)
-   * [urls.cpython-38.pyc](./Board/__pycache__/urls.cpython-38.pyc)
-   * [settings.cpython-38.pyc](./Board/__pycache__/settings.cpython-38.pyc)
- * [users](./users)
-   * [__init__.py](./users/__init__.py)
-   * [apps.py](./users/apps.py)
-   * [tests.py](./users/tests.py)
-   * [serializers.py](./users/serializers.py)
-   * [token.py](./users/token.py)
-   * [admin.py](./users/admin.py)
-   * [models.py](./users/models.py)
-   * [urls.py](./users/urls.py)
-   * [migrations](./users/migrations)
-     * [__init__.py](./users/migrations/__init__.py)
-     * [0001_initial.py](./users/migrations/0001_initial.py)
-     * [__pycache__](./users/migrations/__pycache__)
-     * [__init__.cpython-38.pyc](./users/migrations/__pycache__/__init__.cpython-38.pyc)
-     * [0001_initial.cpython-38.pyc](./users/migrations/__pycache__/0001_initial.cpython-38.pyc)
-   * [__pycache__](./users/__pycache__)
-     * [__init__.cpython-38.pyc](./users/__pycache__/__init__.cpython-38.pyc)
-     * [admin.cpython-38.pyc](./users/__pycache__/admin.cpython-38.pyc)
-     * [apps.cpython-38.pyc](./users/__pycache__/apps.cpython-38.pyc)
-     * [models.cpython-38.pyc](./users/__pycache__/models.cpython-38.pyc)
-     * [urls.cpython-38.pyc](./users/__pycache__/urls.cpython-38.pyc)
-     * [__init__.cpython-310.pyc](./users/__pycache__/__init__.cpython-310.pyc)
-     * [models.cpython-310.pyc](./users/__pycache__/models.cpython-310.pyc)
-     * [views.cpython-38.pyc](./users/__pycache__/views.cpython-38.pyc)
-   * [views.py](./users/views.py)
- * [board_project.pem](./board_project.pem)
- * [core](./core)
-   * [__init__.py](./core/__init__.py)
-   * [admin.py](./core/admin.py)
-   * [apps.py](./core/apps.py)
-   * [models.py](./core/models.py)
-   * [tests.py](./core/tests.py)
-   * [views.py](./core/views.py)
-   * [migrations](./core/migrations)
-     * [__init__.py](./core/migrations/__init__.py)
-     * [__pycache__](./core/migrations/__pycache__)
-     * [__init__.cpython-38.pyc](./core/migrations/__pycache__/__init__.cpython-38.pyc)
-   * [utils.py](./core/utils.py)
-   * [__pycache__](./core/__pycache__)
-   * [__init__.cpython-38.pyc](./core/__pycache__/__init__.cpython-38.pyc)
-   * [admin.cpython-38.pyc](./core/__pycache__/admin.cpython-38.pyc)
-   * [apps.cpython-38.pyc](./core/__pycache__/apps.cpython-38.pyc)
-   * [models.cpython-38.pyc](./core/__pycache__/models.cpython-38.pyc)
-   * [utils.cpython-38.pyc](./core/__pycache__/utils.cpython-38.pyc)
- * [postings](./postings)
-   * [__init__.py](./postings/__init__.py)
-   * [admin.py](./postings/admin.py)
-   * [apps.py](./postings/apps.py)
-   * [tests.py](./postings/tests.py)
-   * [permissions.py](./postings/permissions.py)
-   * [migrations](./postings/migrations)
-     * [__init__.py](./postings/migrations/__init__.py)
-     * [0001_initial.py](./postings/migrations/0001_initial.py)
-     * [0002_initial.py](./postings/migrations/0002_initial.py)
-     * [0003_commentlike_postlike_delete_like.py](./postings/migrations/0003_commentlike_postlike_delete_like.py)
-     * [0004_rename_category_category_category_name_and_more.py](./postings/migrations/0004_rename_category_category_category_name_and_more.py)
-     * [0005_alter_post_tag.py](./postings/migrations/0005_alter_post_tag.py)
-     * [0006_alter_post_tag.py](./postings/migrations/0006_alter_post_tag.py)
-     * [__pycache__](./postings/migrations/__pycache__)
-     * [__init__.cpython-38.pyc](./postings/migrations/__pycache__/__init__.cpython-38.pyc)
-     * [0001_initial.cpython-38.pyc](./postings/migrations/__pycache__/0001_initial.cpython-38.pyc)
-     * [0002_initial.cpython-38.pyc](./postings/migrations/__pycache__/0002_initial.cpython-38.pyc)
-     * [0003_commentlike_postlike_delete_like.cpython-38.pyc](./postings/migrations/__pycache__/0003_commentlike_postlike_delete_like.cpython-38.pyc)
-     * [0004_rename_category_category_category_name_and_more.cpython-38.pyc](./postings/migrations/__pycache__/0004_rename_category_category_category_name_and_more.cpython-38.pyc)
-     * [0005_alter_post_tag.cpython-38.pyc](./postings/migrations/__pycache__/0005_alter_post_tag.cpython-38.pyc)
-     * [0006_alter_post_tag.cpython-38.pyc](./postings/migrations/__pycache__/0006_alter_post_tag.cpython-38.pyc)
-   * [urls.py](./postings/urls.py)
-   * [models.py](./postings/models.py)
-   * [views.py](./postings/views.py)
-   * [serializers.py](./postings/serializers.py)
-   * [__pycache__](./postings/__pycache__)
-   * [__init__.cpython-38.pyc](./postings/__pycache__/__init__.cpython-38.pyc)
-   * [admin.cpython-38.pyc](./postings/__pycache__/admin.cpython-38.pyc)
-   * [apps.cpython-38.pyc](./postings/__pycache__/apps.cpython-38.pyc)
-   * [permissions.cpython-38.pyc](./postings/__pycache__/permissions.cpython-38.pyc)
-   * [urls.cpython-38.pyc](./postings/__pycache__/urls.cpython-38.pyc)
-   * [models.cpython-38.pyc](./postings/__pycache__/models.cpython-38.pyc)
-   * [views.cpython-38.pyc](./postings/__pycache__/views.cpython-38.pyc)
-   * [serializers.cpython-38.pyc](./postings/__pycache__/serializers.cpython-38.pyc)
- * [virtualenv](./virtualenv)
-   * [bin](./virtualenv/bin)
-     * [activate](./virtualenv/bin/activate)
-     * [activate.csh](./virtualenv/bin/activate.csh)
-     * [activate.fish](./virtualenv/bin/activate.fish)
-     * [easy_install](./virtualenv/bin/easy_install)
-     * [easy_install-3.6](./virtualenv/bin/easy_install-3.6)
-     * [pip](./virtualenv/bin/pip)
-     * [pip3](./virtualenv/bin/pip3)
-     * [pip3.6](./virtualenv/bin/pip3.6)
-     * [python -> python3](./virtualenv/bin/python -> python3)
-     * [python3](./virtualenv/bin/python3 -> /usr/bin/python3)
-   * [lib64 -> lib](./virtualenv/lib64 -> lib)
-   * [pyvenv.cfg](./virtualenv/pyvenv.cfg)
-   * [share](./virtualenv/share)
-   * [python-wheels](./virtualenv/share/python-wheels)
-   * [CacheControl-0.11.7-py2.py3-none-any.whl](./virtualenv/share/python-wheels/CacheControl-0.11.7-py2.py3-none-any.whl)
-   * [appdirs-1.4.3-py2.py3-none-any.whl](./virtualenv/share/python-wheels/appdirs-1.4.3-py2.py3-none-any.whl)
-   * [certifi-2018.1.18-py2.py3-none-any.whl](./virtualenv/share/python-wheels/certifi-2018.1.18-py2.py3-none-any.whl)
-   * [chardet-3.0.4-py2.py3-none-any.whl](./virtualenv/share/python-wheels/chardet-3.0.4-py2.py3-none-any.whl)
-   * [colorama-0.3.7-py2.py3-none-any.whl](./virtualenv/share/python-wheels/colorama-0.3.7-py2.py3-none-any.whl)
-   * [distlib-0.2.6-py2.py3-none-any.whl](./virtualenv/share/python-wheels/distlib-0.2.6-py2.py3-none-any.whl)
-   * [distro-1.0.1-py2.py3-none-any.whl](./virtualenv/share/python-wheels/distro-1.0.1-py2.py3-none-any.whl)
-   * [html5lib-0.999999999-py2.py3-none-any.whl](./virtualenv/share/python-wheels/html5lib-0.999999999-py2.py3-none-any.whl)
-   * [idna-2.6-py2.py3-none-any.whl](./virtualenv/share/python-wheels/idna-2.6-py2.py3-none-any.whl)
-   * [ipaddress-0.0.0-py2.py3-none-any.whl](./virtualenv/share/python-wheels/ipaddress-0.0.0-py2.py3-none-any.whl)
-   * [lockfile-0.12.2-py2.py3-none-any.whl](./virtualenv/share/python-wheels/lockfile-0.12.2-py2.py3-none-any.whl)
-   * [packaging-17.1-py2.py3-none-any.whl](./virtualenv/share/python-wheels/packaging-17.1-py2.py3-none-any.whl)
-   * [pip-9.0.1-py2.py3-none-any.whl](./virtualenv/share/python-wheels/pip-9.0.1-py2.py3-none-any.whl)
-   * [pkg_resources-0.0.0-py2.py3-none-any.whl](./virtualenv/share/python-wheels/pkg_resources-0.0.0-py2.py3-none-any.whl)
-   * [progress-1.2-py2.py3-none-any.whl](./virtualenv/share/python-wheels/progress-1.2-py2.py3-none-any.whl)
-   * [pyparsing-2.2.0-py2.py3-none-any.whl](./virtualenv/share/python-wheels/pyparsing-2.2.0-py2.py3-none-any.whl)
-   * [requests-2.18.4-py2.py3-none-any.whl](./virtualenv/share/python-wheels/requests-2.18.4-py2.py3-none-any.whl)
-   * [retrying-1.3.3-py2.py3-none-any.whl](./virtualenv/share/python-wheels/retrying-1.3.3-py2.py3-none-any.whl)
-   * [setuptools-39.0.1-py2.py3-none-any.whl](./virtualenv/share/python-wheels/setuptools-39.0.1-py2.py3-none-any.whl)
-   * [six-1.11.0-py2.py3-none-any.whl](./virtualenv/share/python-wheels/six-1.11.0-py2.py3-none-any.whl)
-   * [urllib3-1.22-py2.py3-none-any.whl](./virtualenv/share/python-wheels/urllib3-1.22-py2.py3-none-any.whl)
-   * [webencodings-0.5-py2.py3-none-any.whl](./virtualenv/share/python-wheels/webencodings-0.5-py2.py3-none-any.whl)
-   * [wheel-0.30.0-py2.py3-none-any.whl](./virtualenv/share/python-wheels/wheel-0.30.0-py2.py3-none-any.whl)
- * [update-readme.sh](./update-readme.sh)
+
+## 개발기간 
+2022/03/01~진행중
+
+
+## 팀원
+ 
+**_FE_** : [유환석](https://github.com/GrassHopper42/undefined)
+
+
+
+
+**_BE_** : 박정현
+
+
+
+
+ 
+## 서비스 소개
+ 
+> 게시판 미니 프로젝트 입니다.
+
+
+## 기술 스택
+ 
+Front-End : TypeScript, React.js
+
+
+ 
+Back-End : Python, Django, DRF, MySQL, Miniconda, AWS RDS, AWS EC2
+
+
+ 
+## 협업 툴
+Common : Git, Github, Jira, Notion
+
+
+
+
+## Project Structure
+
+
+ ```bash
+ .
+├── Board
+│   ├── __init__.py
+│   ├── __pycache__
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── README.md
+├── board_project.pem
+├── core
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations
+│   ├── models.py
+│   ├── tests.py
+│   ├── utils.py
+│   └── views.py
+├── manage.py
+├── postings
+│   ├── __init__.py
+│   ├── __pycache__
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   ├── models.py
+│   ├── permissions.py
+│   ├── serializers.py
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── requirements.txt
+├── secrets.json
+├── update-readme.sh
+├── users
+│   ├── __init__.py
+│   ├── __pycache__
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   ├── models.py
+│   ├── serializers.py
+│   ├── tests.py
+│   ├── token.py
+│   ├── urls.py
+│   └── views.py
+└── virtualenv
+    ├── bin
+    │   ├── activate
+    │   ├── activate.csh
+    │   ├── activate.fish
+    │   ├── easy_install
+    │   ├── easy_install-3.6
+    │   ├── pip
+    │   ├── pip3
+    │   ├── pip3.6
+    │   ├── python -> python3
+    │   └── python3 -> /usr/bin/python3
+    ├── lib64 -> lib
+    ├── pyvenv.cfg
+    └── share
+ ```
