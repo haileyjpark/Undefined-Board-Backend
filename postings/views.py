@@ -1,3 +1,5 @@
+from datetime import datetime
+from django.utils import timezone
 from core.utils import MyAuthentication
 from postings.permissions import AllowAny, IsOwnerOrReadOnly
 from .models import Post, Comment, PostLike, CommentLike
@@ -10,9 +12,9 @@ from rest_framework.filters import SearchFilter
 from rest_framework.generics import ListAPIView
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
-
-from postings import serializers
 from django.db.models import Q
+from django.shortcuts import get_object_or_404
+from django.db import transaction
 
 
 class PostViewSet(viewsets.ModelViewSet):
@@ -28,7 +30,34 @@ class PostViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(user = self.request.user)
         
-
+    def retrieve(self, request, pk):
+        instance = get_object_or_404(self.get_queryset(), pk=pk)
+        tomorrow = datetime.replace(timezone.datetime.now(), hour=23, minute=59, second=0)
+        expires = datetime.strftime(tomorrow, "%a, %d-%b-%Y %H:%M:%S GMT")
+        
+        serializer = self.get_serializer(instance)
+        response = Response(serializer.data, status=status.HTTP_200_OK)
+        
+        if request.COOKIES.get('hit') is not None:
+            cookies = request.COOKIES.get('hit')
+            cookies_list = cookies.split('|')
+            if str(pk) not in cookies_list:
+                response.set_cookie('hit', cookies+f'|{pk}', expires=expires)
+                with transaction.atomic():
+                    instance.viewer += 1
+                    instance.save()
+                    
+        else:
+            response.set_cookie('hit', pk, expires=expires)
+            instance.viewer += 1
+            instance.save()
+            
+        serializer = self.get_serializer(instance)
+        response = Response(serializer.data, status=status.HTTP_200_OK)
+        
+        return response
+                    
+        
 class CommentViewSet(viewsets.ModelViewSet):
     authentication_classes = [MyAuthentication]
     permission_classes = [IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
@@ -88,7 +117,7 @@ class CommentLikeViewSet(viewsets.ModelViewSet):
     
 
 class PostSearchView(ListAPIView):
-    permission_classes = [AllowAny]
+    permission_classes = (AllowAny,)
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     http_method_names = ['get']

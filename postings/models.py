@@ -24,11 +24,12 @@ class Post(TimeStampModel):
     content  = models.CharField(max_length=5000)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     user     = models.ForeignKey('users.User', on_delete=models.CASCADE)
-    viewer   = models.IntegerField(null=True)
+    viewer   = models.IntegerField(null=True, default=0)
     tag     = models.ManyToManyField('Tag', through='TagList', related_name="tags")
     
     class Meta:
-        db_table = 'posts'   
+        db_table = 'posts'
+        ordering = ['-created_at']   
 
 
 class PostLike(models.Model):
