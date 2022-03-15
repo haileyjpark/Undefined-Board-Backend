@@ -146,3 +146,9 @@ Common : Git, Github, Jira, Notion
     ├── pyvenv.cfg
     └── share
  ```
+ 
+ 
+ 
+ 
+ ## ERD Modeling
+ ![](https://haileysbucket.s3.ap-northeast-2.amazonaws.com/Board.png)
