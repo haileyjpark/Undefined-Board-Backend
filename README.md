@@ -142,16 +142,6 @@ Common : Git, Github, Jira, Notion
 │   └── views.py
 └── virtualenv
     ├── bin
-    │   ├── activate
-    │   ├── activate.csh
-    │   ├── activate.fish
-    │   ├── easy_install
-    │   ├── easy_install-3.6
-    │   ├── pip
-    │   ├── pip3
-    │   ├── pip3.6
-    │   ├── python -> python3
-    │   └── python3 -> /usr/bin/python3
     ├── lib64 -> lib
     ├── pyvenv.cfg
     └── share
